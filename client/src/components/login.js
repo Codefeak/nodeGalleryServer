@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import './login.css';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 
@@ -37,7 +38,7 @@ class Login extends Component{
                     <label htmlFor="password">Password</label>
                     <input type="password" id ="password" name="password" onChange={this.handleChange}/><br/>
                     <input id="login-btn" type="submit" value="Login"/>
-                    <input id="signup-btn" type="submit" value="Sign up"/>
+                    <button id="signup-btn" value="Sign up"><Link to='/signUp'/></button>
                 </form>
 
             </div>
