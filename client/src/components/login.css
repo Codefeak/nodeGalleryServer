@@ -1,0 +1,30 @@
+.login-container{
+    height:100vh;
+    display:grid;
+    align-items: center;
+}
+
+#login-form{
+    width:20%;
+    padding:1vw 0;
+    border:1px solid #a9a984;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 1px #f1c77a87;
+    justify-self: center;
+    align-self: center;
+}
+
+
+#userName, #password{
+    width:80%;
+    margin:1vw auto;
+    border:none;
+    border-bottom:1px solid;
+}
+
+#signup-btn, #login-btn{
+    width:fit-content;
+    margin: 1vw;
+    background-color: transparent;
+    box-shadow: 1px 1px 2px 1px #f1c77a87;
+}

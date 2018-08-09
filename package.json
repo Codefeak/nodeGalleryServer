@@ -1,0 +1,26 @@
+{
+  "name": "nodegalleryserver",
+  "version": "1.0.0",
+  "description": "Node Server react client gallery",
+  "main": "index.js",
+  "engines": {
+    "node": "10.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "author": "Rojak",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.2.6",
+    "multer": "^1.3.1",
+    "nodemon": "^1.18.3"
+  }
+}
