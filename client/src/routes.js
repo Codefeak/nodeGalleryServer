@@ -3,6 +3,7 @@ import App from './App';
 import Profile from './components/profile';
 import AddNew from './components/addNew';
 import { Switch, Route } from 'react-router';
+import signup from './components/signup';
 
 class Routes extends Component{
     state={
@@ -23,6 +24,7 @@ class Routes extends Component{
                 <Route exact path="/login/profile" 
                     render= {()=>(<Profile students={this.state.students}/>)}
                 />
+                <Route exact path = "/signUp" component = {signup}/>
                 {this.state.students.map(person=>{
                             return <Route exact path={`/login/${person._id}`} 
                                 render= {()=>(<Profile students={this.state.students} person={person}/>)}

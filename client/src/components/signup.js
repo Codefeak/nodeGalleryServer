@@ -5,8 +5,8 @@ import { withRouter } from 'react-router';
 
 class SignUp extends Component{
     state={
-        username = "",
-        password = "",
+        username : "",
+        password : "",
     }
 
     handleChange=(e)=>{

@@ -105,9 +105,9 @@ app.post('/login', (req, res) => {
     
 });
 
-app.post ('/signUp', (req,res)=>{
-    
-});
+// app.post ('/signUp', (req,res)=>{
+
+// });
 
 app.get('/login/images/:id', (req, res) => {
     const id = req.params.id;
