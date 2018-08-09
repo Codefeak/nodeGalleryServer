@@ -87,27 +87,41 @@ app.post('/login/addNew/upload', upload.single('file'), (req,res)=>{
 
 app.get('/api', (req, res) => {
     Informations.find({}, (err, info) => {
-        if (err) console.log(err);
+        if (err)res.status().send(err)
         return (res.json(info));
     })
 });
 
 app.post('/login', (req, res) => {
     User.find({ username: req.body.username }, (err, user) => {
-        if (err) console.log(err);
+        if (err) res.status().send(err);
         user.map(item => {
             if (item.password === req.body.password) {
-                console.log(mongoose);
                 return (res.json(item));
             }
-        })
+        });
     });
     
 });
 
-// app.post ('/signUp', (req,res)=>{
-
-// });
+app.post ('/signUp', (req,res)=>{
+    User.find({username:req.body.username }, (err,user)=>{
+        if(err) res.status().send(err);
+        user.map(item=>{
+            if(item.password === req.body.password){
+                return (res.send('Username already exited. Please choose another name.'))
+            }else{
+                User.create(req.body, (err, user)=>{
+                    if(err)res.status().send(err);
+                })
+                User.find({}, (err,user)=>{
+                    if(err)res.status().send(err);
+                    return (res.status().send('Sucessfully SignedUp. Please Login with your usename and password again.'));
+                });
+            };
+        });
+    });
+});
 
 app.get('/login/images/:id', (req, res) => {
     const id = req.params.id;
@@ -121,7 +135,7 @@ app.get('/login/images/thumbnails/:id', (req, res) => {
 
 app.post('/login/addNew', (req, res) => {
     Informations.create(req.body, (err, user) => {
-        if (err) console.log('err', err);
+        if (err) res.status().send(err);
     });
     Informations.find({}, (err, users) => {
         return (res.json(users));
@@ -131,12 +145,12 @@ app.post('/login/addNew', (req, res) => {
 app.delete('/login/delete', (req, res) => {
     req.body.map(item => {
         Informations.deleteOne({ _id: item._id }, (err, user) => {
-            if (err) console.log('err', err);
-        })
-    })
+            if (err) res.status().send(err);
+        });
+    });
     Informations.find({}, (err, users) => {
         return (res.json(users));
-    })
+    });
 });
 
 app.use(express.static(path.join(__dirname, 'client','build')));
