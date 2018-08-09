@@ -32,15 +32,12 @@ class AddNew extends Component {
     }
 
     handleChange = (e) => {
-        console.log(e.target.value)
         e.preventDefault();
 
         if(e.target.name === 'src'){
             this.setState({src:this.state.firstName});
-            console.log(this.state)
         }
         this.setState({[e.target.name]:e.target.value});
-        console.log(this.state.src);
     };
     handleFocus = (e) =>{
         const field = e.target.name;
@@ -55,12 +52,10 @@ class AddNew extends Component {
     handleFileUpload=(e)=>{
         e.preventDefault();
         this.setState({src:`${this.state.firstName}.jpg`});
-        console.dir(e.target.files[0])
         const data = new FormData();
         data.append('file', e.target.files[0], `${this.state.firstName}.jpg`);
         axios.post('/login/addNew/upload', data)
         .then(res => {
-        console.log(res); // do something with the response
     });
     };
 
@@ -76,7 +71,7 @@ class AddNew extends Component {
         }).then(res=>{
             if(!res.data.error){
             }
-            // this.props.history.push('/login/profile');
+            this.props.history.push('/login/profile');
         });
     }
     validate=(firstName, lastName, title, nationality, skills, whySofterDeveloper, longTermVision, motivatesMe, favoriteQuote, joinedOn)=>{
@@ -119,7 +114,6 @@ class AddNew extends Component {
 
     isSubmitDisabled = errors =>{
         return Object.values(errors).some(errMsg=>{
-            console.log('err', errMsg);
             return errMsg;
         })
     }
@@ -129,7 +123,6 @@ class AddNew extends Component {
             skills, whySofterDeveloper, longTermVision, 
             motivatesMe, favoriteQuote, joinedOn,isTouched } = this.state;
         const errors = this.validate(firstName, lastName, title, nationality, skills, whySofterDeveloper, longTermVision, motivatesMe, favoriteQuote, joinedOn );    
-        console.log(errors.firstName);
             return (
             <div className="form-container ">
                 <form action="/login/addNew" method="post" onSubmit={this.handleSubmit} encType="multipart/form-data">

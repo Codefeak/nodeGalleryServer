@@ -78,7 +78,6 @@ app.post('/login/addNew/upload', upload.single('file'), (req,res)=>{
     if(!req.files){
         return res.send(400).send('No files were uploaded');
     }
-    console.log(req.files);
     req.files.file.mv(`./assets/images/thumbnails/${req.files.file.name}`, err=>{
         if(err)return res.status(500).send(err);
         res.send('File Uploaded');
@@ -142,6 +141,5 @@ app.get('*', (req, res)=>{
 });
 
 app.listen(port, () => {
-    console.log(__dirname);
     console.log(`Listening to port ${port}`);
 })

@@ -49,14 +49,13 @@ class Profile extends Component{
                 url:'/login/delete',
                 data: this.state.individualData
             }).then(res=>{
-                console.log(res.data);
                 this.setState({individualData:res.data, classShow:'show'});
-                // this.props.history.push('/login/profile', {some:res.data});
+                // this.props.history.push('/login/profile');
             });
         }else{
             const tmp = this.filter(this.state.students, e.target.id);
             this.setState({individualData:tmp, classShow:'hide'});
-            // this.props.history.push(`/login/${e.target.id}`)
+            this.props.history.push(`/login/${e.target.id}`)
         }        
     }
 
