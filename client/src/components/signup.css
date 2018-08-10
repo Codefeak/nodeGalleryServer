@@ -1,4 +1,4 @@
-.login-container{
+.signup-container{
     height:100vh;
     display:grid;
     align-items: center;
@@ -6,7 +6,7 @@
     background-size: cover;
 }
 
-#login-form{
+#signup-form{
     width:20%;
     padding:1vw 0;
     border:1px solid #a9a984;
@@ -25,14 +25,14 @@
     border-bottom:1px solid;
 }
 
-#signup-btn, #login-btn{
+#signup-btn, #back-btn{
     width:fit-content;
     margin: 1vw;
     background-color: transparent;
     box-shadow: 1px 1px 2px 1px #61503087;
 }
 
-#signup-btn:hover, #login-btn:hover{
+#signup-btn:hover, #back-btn:hover{
     background-color: #00800059;
     cursor: pointer;
 }

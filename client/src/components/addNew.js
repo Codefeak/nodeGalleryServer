@@ -71,9 +71,10 @@ class AddNew extends Component {
         }).then(res=>{
             if(!res.data.error){
             }
-            this.props.history.push('/login/profile');
+            this.props.history.push('/login/profile', {some:res.data});
         });
     }
+
     validate=(firstName, lastName, title, nationality, skills, whySofterDeveloper, longTermVision, motivatesMe, favoriteQuote, joinedOn)=>{
         const errors = {
             firstName: validator.isEmpty(firstName)

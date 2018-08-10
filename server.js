@@ -107,19 +107,19 @@ app.post('/login', (req, res) => {
 app.post ('/signUp', (req,res)=>{
     User.find({username:req.body.username }, (err,user)=>{
         if(err) res.status().send(err);
-        user.map(item=>{
-            if(item.password === req.body.password){
-                return (res.send('Username already exited. Please choose another name.'))
-            }else{
-                User.create(req.body, (err, user)=>{
-                    if(err)res.status().send(err);
-                })
-                User.find({}, (err,user)=>{
-                    if(err)res.status().send(err);
-                    return (res.status().send('Sucessfully SignedUp. Please Login with your usename and password again.'));
-                });
-            };
-        });
+        User.find({username:req.body.username}, (err,user)=>{
+            if(err){
+                res.status().send(err);
+            }
+            User.create(req.body, (err, user)=>{
+                if(err)res.status().send(err);
+                    res.send('Sucessfully SignedUp. Please Login with your usename and password again.')
+            })
+            User.find({}, (err,user)=>{
+                if(err)res.status().send(err);
+                return (res.json(user));
+            });
+        })
     });
 });
 
@@ -127,6 +127,7 @@ app.get('/login/images/:id', (req, res) => {
     const id = req.params.id;
     res.sendFile(id, { root: ('assets/images') });
 });
+
 
 app.get('/login/images/thumbnails/:id', (req, res) => {
     const id = req.params.id;
@@ -160,4 +161,4 @@ app.get('*', (req, res)=>{
 
 app.listen(port, () => {
     console.log(`Listening to port ${port}`);
-})
+});

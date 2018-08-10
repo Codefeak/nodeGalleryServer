@@ -10,7 +10,7 @@ class Routes extends Component{
         students:[],
     }
     componentDidMount=()=>{
-        fetch('https://react-gallery-server.herokuapp.com/api')
+        fetch('/api')
         .then(res=>res.json())
         .then(api=>{
             this.setState({students:api});

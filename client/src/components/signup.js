@@ -21,22 +21,23 @@ class SignUp extends Component{
             data:this.state
         }).then(res=>{
             if(!res.data.error){
+                console.log(res);
             }
-            this.props.history.push('/login/profile')
+            this.props.history.push('/')
         });
     }
 
     render(){
         return(
             <div className="signup-container">
-            <h1>SignUp Form: </h1>
                 <form id="signup-form" onSubmit={this.handleSubmit}>
+                    <h1>SignUp Form: </h1>
                     <label htmlFor="userName">UserName</label>
                     <input type="text" id="userName" name="username" onChange={this.handleChange}/><br/>
                     <label htmlFor="password">Password</label>
                     <input type="password" id ="password" name="password" onChange={this.handleChange}/><br/>
                     <input id="signup-btn" type="submit" value="Submit"/>
-                    <input id="back-btn" type="submit" value="Backup"/>
+                    <input id="back-btn" type="submit" value="Back"/>
                 </form>
 
             </div>
