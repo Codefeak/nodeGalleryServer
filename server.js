@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const schema = require('./schema');
 const cors = require('cors');
 const multer = require('multer');
 const fileUpload = require('express-fileupload');
@@ -15,57 +16,8 @@ app.use(cors());
 app.use(fileUpload());
 app.use('/images', express.static(path.join(__dirname, 'assets','images')));
 
-
-const schema = {
-    username: {
-        type: String,
-    },
-    password: {
-        type: String,
-    }
-};
-
-const schema1 = {
-    firstName: {
-        type: String,
-    },
-    lastName: {
-        type: String,
-    },
-    title: {
-        type: String,
-    },
-    nationality: {
-        type: String,
-    },
-    src: {
-        type: String,
-    },
-    alt: {
-        type: String,
-    },
-    skills: {
-        type: Array,
-    },
-    whySofterDeveloper: {
-        type: String,
-    },
-    longTermVision: {
-        type: String,
-    },
-    motivatesMe: {
-        type: String,
-    },
-    favoriteQuote: {
-        type: String,
-    },
-    joinedOn: {
-        type: String,
-    }
-}
-
-const User = mongoose.model('User', schema);
-const Informations = mongoose.model('Informations', schema1);
+const User = schema.User;
+const Informations = schema.Informations;
 
 /**
  * Multer config for file upload
@@ -101,7 +53,6 @@ app.post('/login', (req, res) => {
             }
         });
     });
-    
 });
 
 app.post ('/signUp', (req,res)=>{
@@ -127,7 +78,6 @@ app.get('/login/images/:id', (req, res) => {
     const id = req.params.id;
     res.sendFile(id, { root: ('assets/images') });
 });
-
 
 app.get('/login/images/thumbnails/:id', (req, res) => {
     const id = req.params.id;
