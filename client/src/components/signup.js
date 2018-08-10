@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './signup.css';
 import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 
 class SignUp extends Component{
     state={
@@ -37,7 +38,9 @@ class SignUp extends Component{
                     <label htmlFor="password">Password</label>
                     <input type="password" id ="password" name="password" onChange={this.handleChange}/><br/>
                     <input id="signup-btn" type="submit" value="Submit"/>
-                    <input id="back-btn" type="submit" value="Back"/>
+                    <Link to ='/'>
+                        <input id="back-btn" type="submit" value="Back"/>
+                    </Link>
                 </form>
 
             </div>

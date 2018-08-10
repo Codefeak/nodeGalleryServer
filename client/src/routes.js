@@ -21,6 +21,7 @@ class Routes extends Component{
         return(
             <Switch>
                 <Route exact path="/" component= {App}/>
+                <Route exact path="/login" component= {App}/>
                 <Route exact path="/login/profile" 
                     render= {()=>(<Profile students={this.state.students}/>)}
                 />
